@@ -106,7 +106,7 @@
     
                 <li class="nav-item">
     
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
     
                 </li>
     
@@ -114,13 +114,13 @@
     
                 <li class="nav-item">
     
-                    <a class="btn btn-info mr-2" href="#">SignIn</a>
+                    <a class="btn btn-outline-light mr-2" href="{% url 'register' %}">Signup</a>
     
                 </li>
     
                 <li class="nav-item">
     
-                    <a class="btn btn-outline-info" href="#">Login</a>
+                    <a class="btn btn-dark" href="{% url 'login' %}">Login</a>
     
                 </li>
     
@@ -132,8 +132,10 @@
     
     </nav>
 
-    {% block content %}
-    {% endblock %}
+    <div class="container-fluid main-container">
+        {% block content %}
+        {% endblock %}
+    </div>
 
     <footer class="container py-5">
         <div class="row">
