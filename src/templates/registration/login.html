@@ -6,7 +6,7 @@ Login
 {% endblock %}
 
 {% block content %}
-<form class="form-signin">
+<form class="form-signin" method="post">
   {% csrf_token %}
     <div class="text-center mb-4">
       <img class="mb-4" src="{% static 'favicon-72x72.svg' %}" width="72" height="72">

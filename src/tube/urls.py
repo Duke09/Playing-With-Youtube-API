@@ -24,5 +24,5 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('register/', Registration.as_view(), name='register'),
-    path('', include('vid.urls', namespace='vid')),
+    path('', include('halls.urls', namespace='halls')),
 ]

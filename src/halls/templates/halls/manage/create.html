@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Create
+{% endblock %}
+
+{% block content %}
+<form class="form-signin" action="" method="post">
+    {% csrf_token %}
+    <div class="text-center mb-4">
+        <img class="mb-4" src="{% static 'favicon-72x72.svg' %}" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Tube</h1>
+        <hr>
+        <h4 class="h3 mb3 font-weight-normal">Create</h4>
+    </div>
+
+    <div class="form-label-group">
+        <input type="text" name="title" maxlength="255" required="" id="id_title" class="form-control" placeholder="Title">
+        <label for="id_title">Title</label> 
+    </div>
+    <button class="btn btn-md btn-block btn-success" type="submit">Create</button>
+</form>
+{% endblock %}
