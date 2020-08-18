@@ -5,7 +5,7 @@ Register
 {% endblock %}
 
 {% block content %}
-    <form class="form-signin">
+    <form class="form-signin" method="post">
         {% csrf_token %}
           <div class="text-center mb-4">
             <img class="mb-4" src="{% static 'favicon-72x72.svg' %}" width="72" height="72">
@@ -13,6 +13,12 @@ Register
             <hr>
             <h4>Register</h4>
           </div>
+
+          {% if form.errors %}
+            <div class="text-center mb-4">
+              {{ form.errors }}
+            </div>
+          {% endif %}
         
           <div class="form-label-group">
             <input type="text" id="id_username" name="username" class="form-control" placeholder="Username" required="" autocapitalize="none" autocomplete="username" maxlength="150" autofocus="">

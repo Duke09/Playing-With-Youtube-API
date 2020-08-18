@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="col-12 col-md">
+        <h3>{{ hall.title }}</h3>
+        <small class="d-block text-muted">{{ hall.user.username }}</small>
+        <hr>
+    </div>
+</div>
+{% endblock %}

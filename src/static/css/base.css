@@ -1,3 +1,7 @@
+*{
+  list-style-type: none;
+}
+
 html,
 body {
   height: 100%;
@@ -10,6 +14,10 @@ body {
 
 span{
   color: #777;
+}
+
+.errorlist li{
+  color: red;
 }
 
 .form-signin {

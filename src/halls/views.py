@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
-from django.views.generic import CreateView
+from django.views.generic import CreateView, View, DetailView
 
 from .models import Hall, Video
 
@@ -9,7 +9,15 @@ from .models import Hall, Video
 def index(request):
     return render(request, 'halls/index.html')
 
-class CreateHall(CreateView):
+class Detail(DetailView):
+    model = Hall
+    template_name = 'halls/detail.html'
+
+class Dashboard(View):
+    template_name = 'halls/manage/dashboad.html'
+
+
+class CreateView(CreateView):
     model = Hall
     fields = ['title']
     template_name = 'halls/manage/create.html'
@@ -17,5 +25,11 @@ class CreateHall(CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        super(CreateHall, self).form_valid(form)
+        super(CreateView, self).form_valid(form)
         return redirect('halls:index')
+
+class UpdateView(View):
+    pass
+
+class DeleteView(View):
+    pass
