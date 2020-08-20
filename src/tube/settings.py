@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Applications
     'halls.apps.HallsConfig',
+    # Third-party
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

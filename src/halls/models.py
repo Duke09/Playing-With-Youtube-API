@@ -10,7 +10,10 @@ class Hall(models.Model):
         return self.title
 
 class Video(models.Model):
-    vid = models.ForeignKey(Hall, on_delete=models.CASCADE)
+    hall = models.ForeignKey(Hall, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     url = models.URLField()
     youtube_id = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.title

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}
+    Create
+{% endblock %}
+
+{% block content %}
+<form class="form-signin">
+    {% csrf_token %}
+    <div class="text-center mb-4">
+        <img class="mb-4" src="{% static 'favicon-72x72.svg' %}" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Tube</h1>
+        <hr>
+        <h4 class="h3 mb3 font-weight-normal">Add a Video</h4>
+    </div>
+    
+    {{ search }}    
+</form>
+<form class="form-signin" action="" method="post">
+    {% csrf_token %}
+    <div class="form-label-group">
+        <input type="text" name="title" maxlength="255" required="" id="id_title" class="form-control" placeholder="Title">
+        <label for="id_title">Title</label> 
+    </div>
+
+    <div class="form-label-group">
+        <input type="url" name="url" maxlength="200" required="" id="id_url" class="form-control" placeholder="Url">
+        <label for="id_url">Url</label>
+    </div>
+
+    <div class="form-label-group">    
+        <input type="text" name="youtube_id" maxlength="255" required="" id="id_youtube_id" class="form-control" placeholder="YouTube Id">
+        <label for="id_youtube_id">YouTube Id</label> 
+    </div>
+    
+    <!-- {% for field in form %}
+        <div class="form-label-gorup">
+            {% render_field field class+="form-control" %}
+            {{ field.label_tag }}
+        </div>
+    {% endfor %} -->
+
+    <button class="btn btn-md btn-block btn-success" type="submit">Create</button>
+</form>
+{% endblock %}

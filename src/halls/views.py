@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from .models import Hall, Video
+from .forms import VideoForm, SearchForm
 
 # Create your views here.
 def index(request):
@@ -41,4 +42,16 @@ class DeleteHall(DeleteView):
     success_url = reverse_lazy('halls:dashboard')
 
 def create_video(request, pk):
-    pass
+    if request.method == 'POST':
+        form = VideoForm(request.POST)
+        if form.is_valid():
+            video = Video()
+            video.title = form.cleaned_data['title']
+            video.url = form.cleaned_data['url']
+            video.youtube_id = form.cleaned_data['youtube_id']
+            video.hall = Hall.objects.get(pk=pk)
+            video.save()
+        
+    form = VideoForm()
+    search = SearchForm()
+    return render(request, 'halls/manage/videos/create.html', {'form':form, 'search':search})

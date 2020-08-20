@@ -15,5 +15,5 @@ urlpatterns = [
     path('dashboard/hall/<int:pk>/update/', UpdateHall.as_view(), name='update'),
     path('dashboard/hall/<int:pk>/delete/', DeleteHall.as_view(), name='delete'),
     # Video URLS
-    path('dashboard/hall/create/video', create_video, name='create_video'),
+    path('dashboard/hall/<int:pk>/create/video', create_video, name='create_video'),
 ]
