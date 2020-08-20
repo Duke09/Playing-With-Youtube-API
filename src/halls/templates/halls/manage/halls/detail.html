@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ hall.title }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="col-12 col-md">
+        <h3>{{ hall.title }}</h3>
+        <a href="{% url 'halls:delete' hall.id %}" class="btn btn-sm btn-outline-danger float-right ml-1">Delete</a>
+        <a href="{% url 'halls:update' hall.id %}" class="btn btn-sm btn-success float-right">Edit</a>
+        <small class="d-block text-muted">{{ hall.user.username }}</small>
+        <hr>
+    </div>
+</div>
+{% endblock %}

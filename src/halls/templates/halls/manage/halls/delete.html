@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Delete {{ hall.title }}
+{% endblock %}
+
+{% block content %}
+<form class="form-signin" action="" method="post">
+    {% csrf_token %}
+    
+    <div class="text-center mb-4">
+        <img class="mb-4" src="{% static 'favicon-72x72.svg' %}" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Tube</h1>
+        <hr>
+        <h4 class="h3 mb3 font-weight-normal">Delete</h4>
+    </div>
+
+    <div class="form-label-group">
+        <h3>Are you sure you want to delete <a href="{% url 'halls:detail' hall.id %}">{{ hall.title }}</a>?</h3>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <a href="{% url 'halls:detail' hall.id %}" class="btn btn-block btn-outline-warning">Go back</a>
+        </div>
+    
+        <div class="col-6">
+            <button class="btn btn-md btn-block btn-danger" type="submit">Delete</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

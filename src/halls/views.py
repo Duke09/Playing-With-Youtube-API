@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 
-from django.views.generic import CreateView, View, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from .models import Hall, Video
 
@@ -9,27 +9,36 @@ from .models import Hall, Video
 def index(request):
     return render(request, 'halls/index.html')
 
-class Detail(DetailView):
-    model = Hall
-    template_name = 'halls/detail.html'
-
-class Dashboard(View):
-    template_name = 'halls/manage/dashboad.html'
+def dashboard(request):
+    halls = Hall.objects.all()
+    return render(request, 'halls/manage/dashboard.html', {'halls':halls})
 
 
-class CreateView(CreateView):
+class CreateHall(CreateView):
     model = Hall
     fields = ['title']
-    template_name = 'halls/manage/create.html'
-    success_url = reverse_lazy('index')
+    template_name = 'halls/manage/halls/create.html'
+    success_url = reverse_lazy('halls:dashboard')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         super(CreateView, self).form_valid(form)
-        return redirect('halls:index')
+        return redirect('halls:dashboard')
 
-class UpdateView(View):
-    pass
+class Detail(DetailView):
+    model = Hall
+    template_name = 'halls/manage/halls/detail.html'
 
-class DeleteView(View):
+class UpdateHall(UpdateView):
+    model = Hall
+    template_name = 'halls/manage/halls/update.html'
+    fields = ['title']
+    success_url = reverse_lazy('halls:dashboard')
+
+class DeleteHall(DeleteView):
+    model = Hall
+    template_name = 'halls/manage/halls/delete.html'
+    success_url = reverse_lazy('halls:dashboard')
+
+def create_video(request, pk):
     pass
